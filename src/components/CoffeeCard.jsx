@@ -1,7 +1,7 @@
 function CoffeeCard({ coffee }) {
 
     return (
-        <div>
+        <div className="coffee-card">
             <h2>{coffee.name}</h2>
             <p>{coffee.description}</p>
             <p>{coffee.origin}</p>

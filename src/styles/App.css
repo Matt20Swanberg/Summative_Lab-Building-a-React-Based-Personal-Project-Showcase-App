@@ -19,3 +19,16 @@
    background-color: rgba(176, 175, 175, 0.700);
    box-shadow: 0 3px 6px rgba(176, 175, 175, 0.700);
  }
+
+ .coffee-card {
+   width: 150px;
+   padding: 8px;
+   margin: 1rem 0;
+   border: 1px solid
+ }
+
+ .shop-page {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 1rem;
+ }

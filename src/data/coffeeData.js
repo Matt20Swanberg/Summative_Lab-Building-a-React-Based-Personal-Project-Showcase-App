@@ -1,10 +1,66 @@
 export const coffees = [
     {
-        "id": 1,
-        "description": "Medium Roast, nutty flavor",
-        "name": "Vanilla bean",
-        "origin": "Columbia",
-        "price": 10.00,
-        "location": "New York"
+        id: 1,
+        description: "Medium Roast, nutty flavor",
+        name: "Vanilla bean",
+        origin: "Columbia",
+        price: 10.00,
+        location: "New York"
+    },
+    {
+        id: 2,
+        description: "Dark Roast, Rich flavor",
+        name: "House Blend",
+        origin: "Vietnam",
+        price: 12.00,
+        location: "Brooklyn"
+    },
+    {
+        id: 3,
+        description: "Light Roast, citrus notes",
+        name: "Morning Sunrise",
+        origin: "Ethiopia",
+        price: 11.50,
+        location: "Queens"
+    },
+    {
+        id: 4,
+        description: "Medium Roast, smooth caramel finish",
+        name: "Caramel Blend",
+        origin: "Brazil",
+        price: 13.00,
+        location: "Manhattan"
+    },
+    {
+        id: 5,
+        description: "Dark Roast, bold chocolate flavor",
+        name: "Midnight Roast",
+        origin: "Guatemala",
+        price: 14.50,
+        location: "Brooklyn"
+    },
+    {
+        id: 6,
+        description: "Medium Roast, hints of vanilla and spice",
+        name: "Holiday Reserve",
+        origin: "Costa Rica",
+        price: 15.00,
+        location: "New York"
+    },
+    {
+        id: 7,
+        description: "Espresso Roast, rich and intense",
+        name: "Espresso Supreme",
+        origin: "Italy",
+        price: 16.00,
+        location: "Bronx"
+    },
+    {
+        id: 8,
+        description: "Light Roast, floral aroma",
+        name: "Mountain Mist",
+        origin: "Kenya",
+        price: 12.50,
+        location: "Queens"
     }
 ]

@@ -3,7 +3,7 @@ import CoffeeCard from "../components/CoffeeCard.jsx";
 
 function ShopPage() {
     return (
-        <div>
+        <div className="shop-page">
             {coffees.map((coffee) => (
                 < CoffeeCard
                     key={coffee.id}
