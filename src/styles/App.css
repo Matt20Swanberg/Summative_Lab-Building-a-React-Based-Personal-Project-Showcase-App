@@ -1,6 +1,35 @@
- section.homepage {
+ .app {
+   min-height: 100vh;
    background-color: rgb(162, 106, 69);
    color: black;
+ }
+
+ nav {
+   background-color: #8a796a;
+   display: flex;
+   justify-content: center;
+   gap: 8rem;
+   padding: 12px 0px;
+   flex-wrap: wrap;
+ }
+
+ .nav-link {
+   color: white;
+   text-decoration: none;
+ }
+
+ .nav-link.active {
+   border-bottom: 2px solid white;
+ }
+
+ /*
+ .section-homepage {
+
+ }
+*/
+
+ .home-description {
+   color: white;
  }
 
  .browse-btn {
@@ -18,4 +47,56 @@
  .browse-btn:hover {
    background-color: rgba(176, 175, 175, 0.700);
    box-shadow: 0 3px 6px rgba(176, 175, 175, 0.700);
+ }
+
+ .coffee-card {
+   width: 150px;
+   padding: 8px;
+   margin: 1rem 0;
+   border: 1px solid
+ }
+
+ .shop-page {
+   display: flex;
+   gap: 1rem;
+   align-items: flex-start;
+ }
+
+ .side-panel {
+   width: 200px;
+   min-width: 200px;
+   max-width: 200px;
+   height: 100vh;
+   background-color: #9e846e;
+   flex-shrink: 0;
+ }
+
+ .search-input {
+   margin: 4px;
+    width: calc(100% - 8px);
+   max-width: 100%;
+   padding: 6px;
+   box-sizing: border-box;
+   background-color: rgb(226, 224, 224);
+   border-radius: 8px;
+   border-color: rgb(144, 144, 144);
+ }
+
+ .search-input:focus {
+   outline: none;
+ }
+
+ .coffee-results {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 1rem;
+   margin-top: 2rem;
+ }
+
+ .coffee-card {
+   background-color: rgb(176, 175, 175);
+   color: white;
+   border: 1px solid rgba(176, 175, 175, 0.296);
+   border-radius: 8px;
+   box-shadow: 0 2px 1px rgb(137, 137, 137);
  }
