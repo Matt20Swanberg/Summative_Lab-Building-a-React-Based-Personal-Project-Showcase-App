@@ -1,11 +1,12 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import "../styles/App.css"
 
 function NavBar() {
     return (
         <nav>
-            <Link to="/">Home</Link>
-            <Link to="/shop">Shop</Link>
-            <Link to="/admin">Admin</Link>
+            <NavLink to="/" className="nav-link">Home</NavLink>
+            <NavLink to="/shop" className="nav-link">Shop</NavLink>
+            <NavLink to="/admin" className="nav-link">Admin</NavLink>
         </nav>
     );
 }
