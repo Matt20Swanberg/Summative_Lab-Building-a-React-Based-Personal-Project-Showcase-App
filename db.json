@@ -1,8 +1,26 @@
 {
-  "store_info": [
+  "locations": [
     {
       "id": 1,
-      "name": "Coffee R Us",
+      "name": "Brooklyn",
+      "description": "The go to store for coffee",
+      "phone_number": "555-5555"
+    },
+    {
+      "id": 2,
+      "name": "Manhattan",
+      "description": "The go to store for coffee",
+      "phone_number": "555-5555"
+    },
+    {
+      "id": 3,
+      "name": "New York",
+      "description": "The go to store for coffee",
+      "phone_number": "555-5555"
+    },
+    {
+      "id": 4,
+      "name": "Queens",
       "description": "The go to store for coffee",
       "phone_number": "555-5555"
     }
@@ -71,6 +89,22 @@
       "origin": "Kenya",
       "price": 12.5,
       "location": "Queens"
+    },
+    {
+      "name": "test",
+      "description": "dark, roast, chocolate",
+      "origin": "My mind",
+      "price": 16.61,
+      "location": "New York",
+      "id": 9
+    },
+    {
+      "name": "test",
+      "description": "",
+      "origin": "",
+      "price": 0,
+      "location": "",
+      "id": 10
     }
   ]
 }

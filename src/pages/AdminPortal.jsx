@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function AdminPortal({ coffeeList, setCoffeeList }) {
+function AdminPortal({ coffeeList, setCoffeeList, locations }) {
 
     const [editCoffeeId, setEditCoffeeId] = useState(null)
 
@@ -92,7 +92,7 @@ function AdminPortal({ coffeeList, setCoffeeList }) {
         );
 
         if (!confirmed) return;
-    
+
 
         fetch(`http://localhost:3001/coffee/${id}`, {
             method: "DELETE",
@@ -106,7 +106,7 @@ function AdminPortal({ coffeeList, setCoffeeList }) {
     return (
         <div className="container">
             <form className="add-coffee-form" onSubmit={handleSubmit}>
-                <h3>Add New Coffee</h3>
+                <h3>{editCoffeeId ? "Edit Coffee" : "Add Coffee"}</h3>
                 <input
                     name="name"
                     type="text"
@@ -114,6 +114,7 @@ function AdminPortal({ coffeeList, setCoffeeList }) {
                     className="input-text"
                     value={newCoffee.name}
                     onChange={handleChange}
+                    required
                 />
                 <br />
                 <input
@@ -123,6 +124,7 @@ function AdminPortal({ coffeeList, setCoffeeList }) {
                     className="input-text"
                     value={newCoffee.description}
                     onChange={handleChange}
+                    required
                 />
                 <br />
                 <input
@@ -132,30 +134,43 @@ function AdminPortal({ coffeeList, setCoffeeList }) {
                     className="input-text"
                     value={newCoffee.origin}
                     onChange={handleChange}
+                    required
                 />
                 <br />
                 <input
                     name="price"
-                    type="text"
+                    type="number"
+                    min="0"
+                    step="0.01"
                     placeholder="Enter the coffee price"
                     className="input-text"
                     value={newCoffee.price}
                     onChange={handleChange}
+                    required
                 />
                 <br />
-                <input
+                <select
                     name="location"
-                    type="text"
-                    placeholder="Enter the coffee location"
-                    className="input-text"
+                    className={`input-text ${newCoffee.location ? "selected" : ""}`}
                     value={newCoffee.location}
                     onChange={handleChange}
-                />
+                    required
+                >
+                    <option value="">Select a location</option>
+
+                    {locations.map((location) => (
+                        <option key={location.id} value={location.name}>
+                            {location.name}
+                        </option>
+                    ))}
+                </select>
                 <br />
-                <button type="submit">Add Coffee</button>
+                <button type="submit">
+                    {editCoffeeId ? "Save Changes" : "Add Coffee"}
+                </button>
             </form>
             <section className="admin-coffee-list">
-                <h3>Existing Coffees</h3>
+                <h3 className="table-header">Existing Coffees</h3>
 
                 <table>
                     <thead>
@@ -172,14 +187,16 @@ function AdminPortal({ coffeeList, setCoffeeList }) {
                     <tbody>
                         {coffeeList.map((coffee) => (
                             <tr key={coffee.id}>
-                                <td>{coffee.name}</td>
-                                <td>{coffee.description}</td>
+                                <td className="table-coffee-name">{coffee.name}</td>
+                                <td className="table-coffee-description">{coffee.description}</td>
                                 <td>{coffee.origin}</td>
                                 <td>${coffee.price.toFixed(2)}</td>
                                 <td>{coffee.location}</td>
                                 <td>
-                                    <button type="button" className="edit-btn" onClick={() => handleEdit(coffee)}>Edit</button>
-                                    <button type="button" className="delete-btn" onClick={() => handleDelete(coffee.id)}>Delete</button>
+                                    <div className="table-actions">
+                                        <button type="button" className="edit-btn" onClick={() => handleEdit(coffee)}>Edit</button>
+                                        <button type="button" className="delete-btn" onClick={() => handleDelete(coffee.id)}>Delete</button>
+                                    </div>
                                 </td>
                             </tr>
                         ))}
