@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import { useState } from 'react'
-import { coffees } from "./data/coffeeData";
+import { useEffect, useState } from 'react'
+
 
 import NavBar from "./components/NavBar";
 import HomePage from "./pages/HomePage";
@@ -11,8 +11,14 @@ import AdminPortal from "./pages/AdminPortal";
 import './styles/App.css'
 
 function App() {
-  const [coffeeList, setCoffeeList] = useState(coffees);
-  const [count, setCount] = useState(0)
+const [coffeeList, setCoffeeList] = useState([]);
+
+useEffect(() => {
+  fetch("http://localhost:3001/coffee")
+    .then((response) => response.json())
+    .then((data) => setCoffeeList(data))
+    .catch((error) => console.error("Error fetching coffees:", error));
+}, []);
 
   return (
     <div className="app">
