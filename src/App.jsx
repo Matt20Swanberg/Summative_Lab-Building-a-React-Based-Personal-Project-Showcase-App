@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import { useState } from 'react'
-import { coffees } from "./data/coffeeData";
+import { useEffect, useState } from 'react'
+
 
 import NavBar from "./components/NavBar";
 import HomePage from "./pages/HomePage";
@@ -11,8 +11,21 @@ import AdminPortal from "./pages/AdminPortal";
 import './styles/App.css'
 
 function App() {
-  const [coffeeList, setCoffeeList] = useState(coffees);
-  const [count, setCount] = useState(0)
+  const [coffeeList, setCoffeeList] = useState([]);
+  const [locations, setLocations] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:3001/coffee")
+      .then((response) => response.json())
+      .then((data) => setCoffeeList(data))
+      .catch((error) => console.error("Error fetching coffees:", error));
+  }, []);
+
+  useEffect(() => {
+    fetch("http://localhost:3001/locations")
+      .then((response) => response.json())
+      .then((data) => setLocations(data));
+  }, []);
 
   return (
     <div className="app">
@@ -21,8 +34,8 @@ function App() {
 
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/shop" element={<ShopPage coffeeList={coffeeList} />} />
-          <Route path="/admin" element={<AdminPortal coffeeList={coffeeList} setCoffeeList={setCoffeeList}/>} />
+          <Route path="/shop" element={<ShopPage coffeeList={coffeeList} locations={locations} />} />
+          <Route path="/admin" element={<AdminPortal coffeeList={coffeeList} setCoffeeList={setCoffeeList} locations={locations} />} />
         </Routes>
 
       </BrowserRouter>

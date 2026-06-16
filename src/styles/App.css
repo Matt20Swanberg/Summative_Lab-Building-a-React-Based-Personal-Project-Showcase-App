@@ -71,9 +71,19 @@
    flex-shrink: 0;
  }
 
+ .location-option {
+   display: flex;
+   align-items: center;
+   margin: 12px 8px;
+ }
+
+ .location-option span {
+   width: 100px;
+ }
+
  .search-input {
    margin: 4px;
-    width: calc(100% - 8px);
+   width: calc(100% - 8px);
    max-width: 100%;
    padding: 6px;
    box-sizing: border-box;
@@ -99,4 +109,84 @@
    border: 1px solid rgba(176, 175, 175, 0.296);
    border-radius: 8px;
    box-shadow: 0 2px 1px rgb(137, 137, 137);
+ }
+
+ .add-coffee-form {
+   width: 100%;
+   max-width: 600px;
+   margin: 0 auto;
+ }
+
+ .input-text,
+ select.input-text {
+   width: 100%;
+   max-width: 500px;
+   padding: 8px;
+   box-sizing: border-box;
+ }
+ 
+ .input-text.editing {
+   background-color: #f8f8f8;
+ }
+
+select.input-text {
+  color: gray;
+}
+
+select.input-text.selected {
+  color: black;
+}
+
+ .table-header {
+   background-color: rgba(255, 255, 255, 0.500);
+   text-decoration: underline;
+   padding: 6px;
+ }
+
+ .admin-coffee-list {
+   width: 100%;
+   max-width: 1000px;
+   margin: 2rem auto;
+ }
+
+ .admin-coffee-list table {
+   width: 100%;
+   border-collapse: collapse;
+ }
+
+ td {
+   border-bottom: 1px solid #ccc;
+   font-size: 20px;
+   padding: 2px 12px;
+ }
+
+ .table-coffee-name {
+   text-align: left;
+ }
+
+ .table-coffee-description {
+   text-align: left;
+   padding-right: 24px;
+ }
+
+ .admin-coffee-list button {
+   border-radius: 8px;
+   border-color: rgba(255, 255, 255, 0.367);
+ }
+
+ .table-actions {
+   display: flex;
+   gap: 8px;
+   align-items: center;
+ }
+
+ .edit-btn {
+   color: rgb(6, 118, 255);
+   font-weight: bold;
+ }
+
+ .delete-btn {
+   color: rgb(255, 255, 255);
+   font-weight: bold;
+   background-color: rgb(236, 34, 34);
  }
