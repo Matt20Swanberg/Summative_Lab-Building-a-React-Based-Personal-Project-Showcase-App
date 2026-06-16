@@ -1,13 +1,12 @@
 import { useState } from "react";
-import { coffees } from "../data/coffeeData";
 import CoffeeCard from "../components/CoffeeCard.jsx";
 
-function ShopPage() {
+function ShopPage({ coffeeList }) {
 
     const [searchTerm, setSearchTerm] = useState("");
     const [selectedLocation, setSelectedLocation] = useState("All");
 
-    const filteredCoffees = coffees.filter((coffee) => {
+    const filteredCoffees = coffeeList.filter((coffee) => {
         const searchMatch = (
             coffee.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
             coffee.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
