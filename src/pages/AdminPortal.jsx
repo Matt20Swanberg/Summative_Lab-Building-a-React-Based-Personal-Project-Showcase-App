@@ -34,34 +34,46 @@ function AdminPortal({ coffeeList, setCoffeeList }) {
     const handleSubmit = (event) => {
         event.preventDefault();
         if (editCoffeeId) {
-            const coffeeToEdit = coffeeList.map((coffee) => {
-                if (coffee.id === editCoffeeId) {
-                    return {
-                        ...coffee,
-                        ...newCoffee,
-                        price: Number(newCoffee.price),
-                    }
-                }
-                return coffee;
-            })
-            setCoffeeList(coffeeToEdit);
 
-        } else {
-            const coffeeToAdd = {
-                id: coffeeList.length + 1,
+            const updatedCoffee = {
                 ...newCoffee,
                 price: Number(newCoffee.price),
-            }
+            };
 
-            setCoffeeList([...coffeeList, coffeeToAdd]);
-
-            setNewCoffee({
-                name: "",
-                description: "",
-                origin: "",
-                price: "",
-                location: "",
+            fetch(`http://localhost:3001/coffee/${editCoffeeId}`, {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(updatedCoffee),
             })
+                .then((response) => response.json())
+                .then((updatedCoffee) => {
+                    const updatedCoffeeList = coffeeList.map((coffee) =>
+                        coffee.id === editCoffeeId
+                            ? updatedCoffee
+                            : coffee
+                    );
+
+                    setCoffeeList(updatedCoffeeList);
+                });
+        } else {
+            const coffeeToAdd = {
+                ...newCoffee,
+                price: Number(newCoffee.price),
+            };
+
+            fetch("http://localhost:3001/coffee", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(coffeeToAdd),
+            })
+                .then((response) => response.json())
+                .then((addedCoffee) => {
+                    setCoffeeList([...coffeeList, addedCoffee]);
+                });
         }
         setEditCoffeeId(null);
         setNewCoffee({
@@ -71,6 +83,24 @@ function AdminPortal({ coffeeList, setCoffeeList }) {
             price: "",
             location: "",
         })
+    };
+
+    const handleDelete = (id) => {
+
+        const confirmed = window.confirm(
+            "Are you sure you want to delete this coffee?"
+        );
+
+        if (!confirmed) return;
+    
+
+        fetch(`http://localhost:3001/coffee/${id}`, {
+            method: "DELETE",
+        })
+            .then(() => {
+                const updatedCoffeeList = coffeeList.filter((coffee) => coffee.id !== id);
+                setCoffeeList(updatedCoffeeList);
+            });
     };
 
     return (
@@ -148,7 +178,8 @@ function AdminPortal({ coffeeList, setCoffeeList }) {
                                 <td>${coffee.price.toFixed(2)}</td>
                                 <td>{coffee.location}</td>
                                 <td>
-                                    <button type="button" onClick={() => handleEdit(coffee)}>Edit</button>
+                                    <button type="button" className="edit-btn" onClick={() => handleEdit(coffee)}>Edit</button>
+                                    <button type="button" className="delete-btn" onClick={() => handleDelete(coffee.id)}>Delete</button>
                                 </td>
                             </tr>
                         ))}
