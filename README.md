@@ -111,7 +111,11 @@ Form used to create new coffee entries.
 
 Existing coffee information can be updated through the admin interface.
 
+### Delete Coffee
 
+![Delete Coffee](./screenshots/delete-coffee.png)
+
+Existing coffee information can be deleted through the admin interface.
 
 ---
 
