@@ -1,5 +1,7 @@
 import { useState } from "react";
 import CoffeeCard from "../components/CoffeeCard.jsx";
+import SearchBar from "../components/SearchBar.jsx";
+import SideBarFilter from "../components/SideBarFilter.jsx";
 
 function ShopPage({ coffeeList }) {
 
@@ -34,46 +36,27 @@ function ShopPage({ coffeeList }) {
     }
 
     return (
-        <div className="shop-page">
-            <aside className="side-panel">
-                <input type="text" placeholder="Search coffees..." className="search-input" value={searchTerm} onChange={handleSearch} />
-                <label className="location-option">
-                    <input type="radio" value="All" checked={selectedLocation === "All"} onChange={handleLocation} />
-                    All
-                </label>
-                <label className="location-option">
-                    <input type="radio" value="Brooklyn" checked={selectedLocation === "Brooklyn"} onChange={handleLocation} />
-                    Brooklyn
-                </label>
-                <label className="location-option">
-                    <input type="radio" value="Manhattan" checked={selectedLocation === "Manhattan"} onChange={handleLocation} />
-                    Manhattan
-                </label>
-                <label className="location-option">
-                    <input type="radio" value="New York" checked={selectedLocation === "New York"} onChange={handleLocation} />
-                    New York
-                </label>
-                <label className="location-option">
-                    <input type="radio" value="Queens" checked={selectedLocation === "Queens"} onChange={handleLocation} />
-                    Queens
-                </label>
-            </aside>
+    <div className="shop-page">
+      <aside className="side-panel">
+        <SearchBar searchTerm={searchTerm} onSearch={handleSearch} />
 
-            <section className="coffee-results">
-                {filteredCoffees.length === 0 ? (
-                    <p className="no-search-results">No results found</p>
-                ) :
-                    (filteredCoffees.map((coffee) => (
-                        < CoffeeCard
-                            key={coffee.id}
-                            coffee={coffee}
-                        />
-                    ))
-                    )
-                }
-            </section>
-        </div>
-    )
+        <SideBarFilter
+          selectedLocation={selectedLocation}
+          onLocationChange={handleLocation}
+        />
+      </aside>
+
+      <section className="coffee-results">
+        {filteredCoffees.length === 0 ? (
+          <p className="no-search-results">No results found</p>
+        ) : (
+          filteredCoffees.map((coffee) => (
+            <CoffeeCard key={coffee.id} coffee={coffee} />
+          ))
+        )}
+      </section>
+    </div>
+  );
 }
 
-export default ShopPage
+export default ShopPage;
