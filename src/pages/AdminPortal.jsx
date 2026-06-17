@@ -13,7 +13,6 @@ function AdminPortal({ coffeeList, setCoffeeList, locations }) {
     });
 
     const handleEdit = (coffee) => {
-        event.preventDefault();
         setEditCoffeeId(coffee.id);
 
         setNewCoffee({
