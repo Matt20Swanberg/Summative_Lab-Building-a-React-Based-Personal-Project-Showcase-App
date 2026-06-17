@@ -1,88 +1,244 @@
-# Summative_Lab-Building-a-React-Based-Personal-Project-Showcase-App
+# Coffee R Us
 
-## Summary
-In this summative lab, you will design and develop a personal React-based project showcase application. Using the provided mock-up design document, you will build a single-page application (SPA) that adheres to modern frontend development practices. The application will demonstrate proficiency in Advanced React concepts such as state management through hooks, event handling, data fetching, and client-side routing. The lab reflects real-world challenges junior developers may face, preparing you to build scalable and interactive React applications.
+Coffee R Us is a React single-page application that allows users to browse a coffee inventory, search and filter available coffees, and manage inventory through an administrative portal.
 
-## The Scenario
-You are tasked with creating an administrator portal for an e-commerce website, which will include:
+## Features
 
-A landing page describing what the site is about.
-A form page that allows for a new product to be added.
-A product page that will show the product.
-Allow the administrator to change different values of the product, such as price.
-A search functionality that allows users to dynamically search for a product.
-A responsive design that matches the mock-up.
-By completing this lab, you will:
-Introduce advanced state management techniques.
-Implement client-side routing.
-Manipulate data through a simulated backend to maintain persistence.
-Test React components and interactions.
+### Home Page
+- Displays a welcome message and application branding.
+- Provides navigation to the coffee shop catalog.
 
-## Instructions
-# Task 1: Define the Problem
-Analyze the mock-up design document to understand the project requirements and layout.
-Identify the necessary components and their hierarchy based on the design.
-Determine the routes needed to manage page layout.
-Build out a simulated backend within the db.json file.
+### Shop Page
+- Displays all available coffees.
+- Search coffees by:
+  - Name
+  - Description
+  - Origin
+- Filter coffees by location:
+  - All
+  - Brooklyn
+  - Manhattan
+  - New York
+  - Queens
 
-# Task 2: Determine the Design
-Create a component tree that outlines the structure of your application, including parent and child components.
-Define state and prop relationships within the component tree.
-Build mock data that will resemble a product.
-The data for this e-commerce site will be up to you! You can make this site sell what you would like. Here is an example you can use to get yourself started.
-{
- "store_info": [
-    {
-      "id": 1,
-      "name": "Coffee R Us",
-      "description": "The go to store for coffee",
-      "phone_number": "555-5555"
-    }
-   ],
-  "coffee": [
-    {
-      "id": 1,
-      "description": "Medium Roast, nutty flavor",
-      "name": "Vanilla bean",
-      "origin": "Columbia",
-      "price": 10.00
-    },
-    {
-      "id": 2,
-      "description": "Dark Roast, Rich flavor",
-      "name": "House Blend",
-      "origin": "Vietnam",
-      "price": 12.00
-    }
-   ]
-}
- Use the mock-up to finalize the visual layout and flow.
+### Admin Portal
+- View all existing coffees.
+- Add new coffees.
+- Edit existing coffees.
+- Delete coffees with confirmation.
 
-# Task 3: Develop the Code
-File Setup
-Initialize or clone a new React project:
-Using create-react-app, Vite, or a similar tool and GitHub.
-Create a directory structure for components, hooks, styles, and tests.
-Routes
-Build functional routes and components.
-Build navigation between routes.
-State Management
-Use useState for local state management.
-Use useId, useContext, and useRef as necessary.
-Implement a custom hook.
-Data Fetching
-Create and fetch data with a GET request to display data.
-Create a POST request to add new data.
-Create a PATCH request to allow administrators to edit data.
+---
 
-# Task 4: Test and Debug
-Write unit tests for key components using Vitest and React Testing Library.
-Test user interactions such as form submissions and routing.
-Debug errors using browser developer tools and React DevTools.
-Refactor for code clarity and maintainability.
-# Task 5: Document and Maintain
-Add comments to explain complex logic and structure.
-Write a README.md file that:
-Provides setup and usage instructions.
-Highlights features and any known limitations.
-Push your project to GitHub, ensuring the repository is public for review.
+## Technologies Used
+
+- React
+- React Router
+- JavaScript (ES6+)
+- CSS
+- JSON Server
+- Vitest
+- React Testing Library
+
+---
+
+## Project Structure
+
+```text
+src/
+├── components/
+│   ├── CoffeeCard.jsx
+│   ├── NavBar.jsx
+│   ├── SearchBar.jsx
+│   └── SideBarFilter.jsx
+│
+├── pages/
+│   ├── HomePage.jsx
+│   ├── ShopPage.jsx
+│   └── AdminPortal.jsx
+│
+├── tests/
+│   ├── HomePage.test.jsx
+│   ├── ShopPage.test.jsx
+│   └── AdminPortal.test.jsx
+│
+├── App.jsx
+└── main.jsx
+```
+
+---
+
+## Screenshots
+
+### Home Page
+
+![Home Page](./screenshots/homepage.png)
+
+Displays the landing page and navigation to the coffee catalog.
+
+### Shop Page
+
+![Shop Page](./screenshots/shop-page.png)
+
+Users can browse, search, and filter coffees by location.
+
+### Search Functionality
+
+![Search Results](./screenshots/search-results.png)
+
+Coffee inventory updates dynamically as users search by name, description, or origin.
+
+### Location Filter
+
+![Location Filter](./screenshots/location-filter.png)
+
+Users can filter available coffees by store location.
+
+### Admin Portal
+
+![Admin Portal](./screenshots/admin-portal.png)
+
+Administrators can add, edit, and delete coffee inventory.
+
+### Add Coffee Form
+
+![Add Coffee](./screenshots/add-coffee.png)
+
+Form used to create new coffee entries.
+
+### Edit Coffee
+
+![Edit Coffee](./screenshots/edit-coffee.png)
+
+Existing coffee information can be updated through the admin interface.
+
+
+
+---
+
+## Installation
+
+Clone the repository:
+
+```bash
+git clone <repository-url>
+```
+
+Navigate into the project directory:
+
+```bash
+cd coffee-r-us
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+---
+
+## Running the Application
+
+Start the React development server:
+
+```bash
+npm run dev
+```
+
+Start the JSON Server:
+
+```bash
+npx json-server --watch db.json --port 3001
+```
+
+The application will be available at:
+
+```text
+http://localhost:5173
+```
+
+The API will be available at:
+
+```text
+http://localhost:3001
+```
+
+---
+
+## Testing
+
+Run all tests:
+
+```bash
+npm test
+```
+
+Run Vitest in watch mode:
+
+```bash
+npm run test
+```
+
+Run test coverage:
+
+```bash
+npm run coverage
+```
+
+### Test Coverage
+
+The test suite validates:
+
+#### Home Page
+- Homepage content renders correctly.
+- Navigation link routes users to the shop page.
+
+#### Shop Page
+- Coffee cards render correctly.
+- Search functionality works by:
+  - Name
+  - Description
+  - Origin
+- Location filtering updates displayed coffees.
+
+#### Admin Portal
+- Form and table render correctly.
+- New coffees can be added.
+- Existing coffees can be edited.
+- Coffees can be deleted.
+- Delete cancellation prevents removal.
+
+---
+
+## API Endpoints
+
+### Coffees
+
+```http
+GET    /coffee
+POST   /coffee
+PATCH  /coffee/:id
+DELETE /coffee/:id
+```
+
+### Locations
+
+```http
+GET /locations
+```
+
+---
+
+## Future Improvements
+
+- Form validation and error handling.
+- Dynamic location management.
+- Coffee image support.
+- User authentication for the Admin Portal.
+- Responsive mobile layout enhancements.
+
+---
+
+## Author
+
+Created by Matthew Swanberg as part of a React and Testing Summative Lab (course 5 mod 8)
