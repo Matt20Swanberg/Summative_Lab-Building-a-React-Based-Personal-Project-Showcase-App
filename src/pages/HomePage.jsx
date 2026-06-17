@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import "../styles/App.css"
 
+// Landing page for the app with a call-to-action that routes users to the shop
 function HomePage() {
     return (
         <section className="homepage">

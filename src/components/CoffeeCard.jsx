@@ -1,3 +1,4 @@
+// Displays a single coffee item in card format
 function CoffeeCard({ coffee }) {
 
     return (

@@ -2,8 +2,11 @@ import { useState } from "react";
 
 function AdminPortal({ coffeeList, setCoffeeList, locations }) {
 
+    // Tracks which coffee is currently being edited
+    // If null, the form is in "add coffee" mode
     const [editCoffeeId, setEditCoffeeId] = useState(null)
 
+    // Stores form input values for adding or editing a coffee
     const [newCoffee, setNewCoffee] = useState({
         name: "",
         description: "",
@@ -12,6 +15,7 @@ function AdminPortal({ coffeeList, setCoffeeList, locations }) {
         location: ""
     });
 
+    // Loads the selected coffee into the form and switches to edit mode
     const handleEdit = (coffee) => {
         setEditCoffeeId(coffee.id);
 
@@ -24,12 +28,15 @@ function AdminPortal({ coffeeList, setCoffeeList, locations }) {
         })
     }
 
+    // Updates form state when the user types or selects a location
     const handleChange = (event) => {
         const { name, value } = event.target;
 
         setNewCoffee({ ...newCoffee, [name]: value })
     };
 
+    // Handles both adding and editing coffee
+    // If editCoffeeId exists, sends PATCH; otherwise sends POST
     const handleSubmit = (event) => {
         event.preventDefault();
         if (editCoffeeId) {
@@ -84,6 +91,7 @@ function AdminPortal({ coffeeList, setCoffeeList, locations }) {
         })
     };
 
+    // Deletes a coffee after user confirmation.
     const handleDelete = (id) => {
 
         const confirmed = window.confirm(
