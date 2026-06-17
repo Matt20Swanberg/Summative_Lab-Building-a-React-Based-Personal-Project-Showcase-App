@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import "../styles/App.css"
 
+// Main navigation links for moving between the homepage, shop, and admin portal
 function NavBar() {
     return (
         <nav>

@@ -7,6 +7,7 @@ afterEach(() => {
     cleanup();
 });
 
+// Sample coffees used to test searching, filtering, and CRUD actions.
 const mockCoffeeList = [
     {
         id: 1,
@@ -83,6 +84,8 @@ describe("ShopPage", () => {
     it("filters coffees by selected location", () => {
         render(<ShopPage coffeeList={mockCoffeeList} />);
 
+        // Multiple radio elements match "Brooklyn" in Testing Library,
+        // so select the radio by its value.
         const brooklynRadio = screen
             .getAllByRole("radio")
             .find((radio) => radio.value === "Brooklyn");

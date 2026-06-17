@@ -3,9 +3,11 @@ import CoffeeCard from "../components/CoffeeCard.jsx";
 
 function ShopPage({ coffeeList }) {
 
+    // Tracks the user's search input and selected location filter
     const [searchTerm, setSearchTerm] = useState("");
     const [selectedLocation, setSelectedLocation] = useState("All");
 
+    // Filters coffees by search term and selected location before rendering cards
     const filteredCoffees = coffeeList.filter((coffee) => {
         const searchMatch = (
             coffee.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -21,10 +23,12 @@ function ShopPage({ coffeeList }) {
     }
     )
 
+    // Updates the search term as the user types
     const handleSearch = (event) => {
         setSearchTerm(event.target.value)
     }
 
+    // Updates the selected location when a radio button is clicked
     const handleLocation = (event) => {
         setSelectedLocation(event.target.value)
     }

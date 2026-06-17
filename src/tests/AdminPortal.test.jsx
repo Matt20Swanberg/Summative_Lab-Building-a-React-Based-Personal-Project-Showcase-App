@@ -3,6 +3,7 @@ import { render, screen, fireEvent, cleanup, waitFor } from "@testing-library/re
 import "@testing-library/jest-dom/vitest";
 import AdminPortal from "../pages/AdminPortal";
 
+// Sample coffees used to test searching, filtering, and CRUD actions.
 const mockCoffeeList = [
     {
         id: 1,
@@ -22,6 +23,7 @@ const mockLocations = [
 describe("AdminPortal", () => {
     const mockSetCoffeeList = vi.fn();
 
+    // Mock API responses to avoid making real network requests during tests.
     beforeEach(() => {
         vi.clearAllMocks();
 
@@ -165,6 +167,7 @@ describe("AdminPortal", () => {
     });
 
     it("deletes a coffee when confirmed", async () => {
+        // Simulate the user confirming the browser delete prompt.
         window.confirm = vi.fn(() => true);
 
         render(
@@ -192,22 +195,22 @@ describe("AdminPortal", () => {
     });
 
     it("does not delete a coffee when cancelled", () => {
-  window.confirm = vi.fn(() => false);
+        window.confirm = vi.fn(() => false);
 
-  render(
-    <AdminPortal
-      coffeeList={mockCoffeeList}
-      setCoffeeList={mockSetCoffeeList}
-      locations={mockLocations}
-    />
-  );
+        render(
+            <AdminPortal
+                coffeeList={mockCoffeeList}
+                setCoffeeList={mockSetCoffeeList}
+                locations={mockLocations}
+            />
+        );
 
-  fireEvent.click(
-    screen.getByRole("button", { name: /delete/i })
-  );
+        fireEvent.click(
+            screen.getByRole("button", { name: /delete/i })
+        );
 
-  expect(window.confirm).toHaveBeenCalled();
-  expect(global.fetch).not.toHaveBeenCalled();
-  expect(mockSetCoffeeList).not.toHaveBeenCalled();
-});
+        expect(window.confirm).toHaveBeenCalled();
+        expect(global.fetch).not.toHaveBeenCalled();
+        expect(mockSetCoffeeList).not.toHaveBeenCalled();
+    });
 });
